@@ -1,5 +1,23 @@
 {
+  "name": "proshop-v2",
+  "version": "2.0.0",
+  "description": "eCommerce application built eith MERN stack",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moham-mad2026/proshop-demo.git"
+  },
+  "author": "Mohammad Pourkazemi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moham-mad2026/proshop-demo/issues"
+  },
+  "homepage": "https://github.com/moham-mad2026/proshop-demo#readme",
   "dependencies": {
-    "react-router-dom": "^6.26.2"
+    "express": "^4.21.1"
   }
 }
