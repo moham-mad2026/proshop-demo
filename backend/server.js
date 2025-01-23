@@ -1,26 +1,38 @@
 import express from 'express';
 import dotenv from 'dotenv';
-dotenv.config();
+import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import productRouts from './routs/productRouts.js';
-const port = process.env.PORT || 5000;
+import userRouts from './routs/userRouts.js';
 
+// بارگذاری تنظیمات محیطی
+dotenv.config();
+
+// اتصال به دیتابیس
 connectDB();
-
 
 const app = express();
 
+// استفاده از middleware برای پارس کردن بدنه درخواست‌ها
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
+
+// مسیر اصلی API
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
+// مسیرهای محصولات و کاربران
 app.use('/api/products', productRouts);
+app.use('/api/users', userRouts);
 
-
+// مدیریت خطاهای مربوط به مسیرها
 app.use(notFound);
-
 app.use(errorHandler);
 
-
-app.listen(port, () => console.log(`Server running on port ${port}`));
+// شروع به کار سرور
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
