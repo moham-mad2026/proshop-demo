@@ -44,6 +44,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String,
+        required: true,
+    },
     reviews: [reviewSchema],
     rating: {
         type: Number,
